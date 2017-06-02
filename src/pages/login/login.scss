@@ -1,0 +1,28 @@
+form {
+  &.submitted {
+    ion-input {
+      &.ng-invalid {
+        border-color: color($colors, danger);
+      }
+    }
+  }
+  ion-input {
+    border-bottom: 1px solid $list-border-color;
+    margin-bottom: 5px;
+    &.invalid {
+      border-color: color($colors, danger);
+    }
+  }
+  .item {
+    &.error-item {
+      min-height: initial;
+      .label {
+        margin-top: 0;
+      }
+    }
+    p {
+      color: color($colors, danger);
+      font-size: 12px;
+    }
+  }
+}

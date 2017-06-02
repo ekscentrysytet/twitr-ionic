@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Post</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content *ngIf="post">
+  <ion-card>
+    <ion-item>
+      <ion-avatar item-left>
+        <img [attr.src]="post.author?.image || '/assets/images/dummy-avatar.png'">
+      </ion-avatar>
+      <h2>{{ post.title }}</h2>
+      <p>{{ post.createdAt | date }}</p>
+    </ion-item>
+
+    <ion-card-content>
+      <p>{{ post.text }}</p>
+    </ion-card-content>
+
+    <p [hidden]="post.comments?.length">No comments yet.</p>
+
+    <ion-list [hidden]="!post.comments?.length">
+      <ion-item *ngFor="let comment of post.comments">
+        <ion-avatar item-left>
+          <img src="/assets/images/dummy-avatar.png">
+        </ion-avatar>
+        <h2>Cher</h2>
+        <p>Ugh. As if.</p>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>

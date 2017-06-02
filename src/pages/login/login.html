@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Login</h2>
+  <p>
+    Please login or register
+  </p>
+
+  <ion-list no-lines>
+    <form [formGroup]="signInForm" [class.submitted]="submitAttempt">
+      <ion-item>
+        <ion-label color="primary" stacked>Email</ion-label>
+        <ion-input formControlName="email" type="text" [class.invalid]="errors.email"></ion-input>
+      </ion-item>
+      <ion-item class="error-item" *ngIf="!signInForm.controls.email.valid && submitAttempt">
+        <p>Please enter a valid email.</p>
+      </ion-item>
+      <ion-item class="error-item" *ngIf="errors.email">
+        <p>{{ errors.email }}</p>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked>Password</ion-label>
+        <ion-input formControlName="password" type="password" [class.invalid]="errors.password"></ion-input>
+      </ion-item>
+      <ion-item class="error-item" *ngIf="!signInForm.controls.password.valid && submitAttempt">
+        <p>Please enter password.</p>
+      </ion-item>
+      <ion-item class="error-item" *ngIf="errors.password">
+        <p>{{ errors.password }}</p>
+      </ion-item>
+    </form>
+  </ion-list>
+
+  <p>
+    <button
+      ion-button
+      full
+      round
+      (click)="login()">Login</button>
+  </p>
+  <p>
+    <button
+      ion-button
+      full
+      round
+      color="secondary"
+      (click)="register()">Register</button>
+  </p>
+</ion-content>
